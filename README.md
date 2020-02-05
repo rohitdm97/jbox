@@ -1,2 +1,2 @@
-# jbox
+# Jbox
 Demo Spring Boot Java Application
