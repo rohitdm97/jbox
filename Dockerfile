@@ -4,6 +4,6 @@ RUN ["mvn", "package", "-DskipTests"]
 COPY . /
 RUN ["mvn", "clean", "install"]
 
-FROM ubuntu:18.04
+FROM drohitdmallappanavar/ubaserdm:2ed6e6d
 COPY --from=build . /
 ENTRYPOINT ["java", "-jar", "target/jbox-0.0.1-SNAPSHOT.jar"]
