@@ -1,0 +1,2 @@
+singleServerConfig:
+  address: "redis://redis_store_host:${REDIS_PORT:-6379}"
