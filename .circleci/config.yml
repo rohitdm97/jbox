@@ -2,7 +2,7 @@ version: 2
 jobs:
     build:
         docker:
-        -   image: circleci/openjdk:8-jdk
+        - image: circleci/openjdk:8-jdk
 
         working_directory: ~/rohitdm97/jbox
         environment:
@@ -10,25 +10,25 @@ jobs:
             CIRCLE_TEST_REPORTS: /tmp/rohitdm97/jbox/circleci-test-results
             CIRCLE_ENV: test
         steps:
-        -   checkout:
-        -   run: mkdir -p $CIRCLE_ARTIFACTS $CIRCLE_TEST_REPORTS
-        -   restore_cache:
+        - checkout:
+        - run: mkdir -p $CIRCLE_ARTIFACTS $CIRCLE_TEST_REPORTS
+        - restore_cache:
                 keys:
                 - trx-audit-dependencies-{{ checksum "pom.xml" }}
                 - trx-audit-dependencies-
                 - trx-audit-
-        -   run:
+        - run:
                 name: run tests
                 command: mvn clean test -Dspring.profiles.active=test
-        -   save_cache:
+        - save_cache:
                 paths:
                 - ~/.m2
                 key: trx-audit-dependencies-{{ checksum "pom.xml" }}
-        -   store_test_results:
+        - store_test_results:
             path: $CIRCLE_TEST_REPORTS
             # Save artifacts
-        -   store_artifacts:
+        - store_artifacts:
                 path: $CIRCLE_ARTIFACTS
-        -   store_artifacts:
+        - store_artifacts:
                 path: $CIRCLE_TEST_REPORTS
 
